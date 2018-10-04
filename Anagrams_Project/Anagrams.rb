@@ -1,5 +1,7 @@
+require 'byebug'
+
 # Phase I: Write a method #first_anagram? that will generate and store all the possible anagrams of the first string. Check if the second string is one of these.
-#since this is a permutation... does this mean its a factorial? n! 
+#since this is a permutation... does this mean its a factorial? n!
 
 def anagram?(string, string2)
   str_arr = string.chars
@@ -10,4 +12,28 @@ def anagram?(string, string2)
 
   answer = answer_array.uniq.join
   answer.include?(string2)
+end
+
+
+# Phase II
+# Write a method #second_anagram? that iterates over the first string
+# For each letter in the first string, find the index of that letter in the second string (hint: use Array#find_index) and delete at that index.
+# The two strings are anagrams if an index is found for every letter and the second string is empty at the end of the iteration.
+# Try varying the length of the input strings. What are the differences between #first_anagram? and #second_anagram??
+
+
+def second_anagram?(string, string2)
+  array = string1.split('')
+  check_array = string.split('')
+
+  array.each do |ch|
+    if check_array.find_index(ch)
+      target = check_array.find_index(ch)
+    else
+      next
+    end
+    check_array.delete_at(target)
+  end
+
+  check_array.empty?
 end

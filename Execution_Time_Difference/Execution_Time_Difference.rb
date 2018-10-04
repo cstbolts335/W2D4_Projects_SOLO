@@ -38,15 +38,38 @@
 #Write a function that iterates through the array and finds all sub-arrays using nested loops. First make an array to hold all sub-arrays. Then find the sums of each sub-array and return the max.
 #Discuss the time complexity of this solution.
 
-# list = [5, 3, -7]
+# list = [5, 3, -7] --> should equal 8
+ # list = [2, 3, -6, 7, -6, 7] -- > should equal 8
+ # list = [-5, -1, -3] --> should just be -1
 
-def largest_sub_sum(array) #technically I believe this is a n^3 operation since you are first doing a n^2 then multiplying by n at the end (the map) -- hence the n^3
+def largest_sub_sum(array) #technically I believe this is a n^3 operation since you are first doing a n^2 with the nested loop and then multiplying by n at the end (the map/ another loop) -- hence the n^3
   answer_subs = []
 
   (0...array.length).each do |i|
     ((i + 1)...array.length).each do |j|
+      answer_subs << [array[i]]
+      answer_subs << [array[j]]
       answer_subs << array[i..j]  #should have every combo in subs now
     end
   end
-  answer_subs.map {|sub| sub.reduce(:+)}.max # should 1) reduce(:+)/ add up every element in each array. The map returns the array and then max returns the max number
+  answer_subs.sort.uniq.map{|sub| sub.reduce(:+)}.max
+  # .map {|sub| sub.reduce(:+)}.max # should 1) reduce(:+)/ add up every element in each array. The map returns the array and then max returns the max number
+end
+
+
+#PHASE 2 - O(n) time with O(1) memory
+
+def largest_contiguous_subsum2(arr)
+  largest = arr.first
+  current = arr.first
+
+  return arr.max if arr.all? { |num| num < 0 }
+
+  (1...arr.length).each do |i|
+    current = 0 if current < 0
+    current += arr[i]
+    largest = current if current > largest
+  end
+
+  largest
 end

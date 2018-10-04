@@ -2,7 +2,8 @@
   # list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
 
   #First, write a function that compares each element to every other element of the list. Return the element if all other elements in the array are larger.
-  #What is the time complexity for this function? The time complexity should be an O(n^2)... even at worst case. This is a very time complex problem
+  #What is the time complexity for this function? The time complexity should be an O(n^2)... even at worst case. This is a very time complex problem.
+  #note to self --> since it's a double while loop, it's n^2. Basically iterating through the input twice. So if you double the input, you n^2 output time 
 
   #
   def check_list(array)

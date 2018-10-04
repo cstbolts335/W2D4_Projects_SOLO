@@ -21,6 +21,8 @@ end
 # The two strings are anagrams if an index is found for every letter and the second string is empty at the end of the iteration.
 # Try varying the length of the input strings. What are the differences between #first_anagram? and #second_anagram??
 
+#We are looping once and then using the delete at function, which should be two ns so n^2 for time and
+
 # STILL WORKING ON THIS...
 def second_anagram?(string, string2)
   array = string.split('')
@@ -45,8 +47,49 @@ end
 # The strings are then anagrams if and only if the sorted versions are the identical.
 # What is the time complexity of this solution? Is it better or worse than #second_anagram??
 
-  #would this be similar to quicksort? in that it's a (n log(n)) for time and space? 
+  #would this be similar to quicksort? in that it's a (n log(n)) for time and space?
 
-def anagram3(string1, string2)
-(string1.chars.sort.join == string2.chars.sort.join) ? true : false
+def anagram3(string, string2)
+(string.chars.sort.join == string2.chars.sort.join) ? true : false
+end
+
+def anagram3V2(string, string2)  #just wanted to see if this would work...
+new_array = string.chars.sort - string2.chars.sort
+new_array.empty? ? true : false
+end
+
+
+
+# Phase IV:
+# Write one more method #fourth_anagram?. This time, use two Hashes to store the number of times each letter appears in both words.
+# Compare the resulting hashes.
+# What is the time complexity? We are using hashes so the time complexity will be linear with a constant space
+
+def anagram4(string, string2)
+  hash1 = Hash.new(0)
+  hash2 = Hash.new(0)
+
+  string.each_char do |ch|
+    hash1[ch] += 1
+  end
+  string2.each_char do |ch|
+    hash2[ch] += 1
+  end
+
+  hash1 == hash2 
+end
+
+
+def anagram4V2(string, string2)
+  comprehensive_hash = Hash.new(0)
+
+  string.each_char do |ch|
+    comprehensive_hash[ch] += 1
+  end
+
+  string2.each_char do |ch|
+    comprehensive_hash[ch] -= 1
+  end
+
+  comprehensive_hash.values.all? {|num| num == 0}
 end

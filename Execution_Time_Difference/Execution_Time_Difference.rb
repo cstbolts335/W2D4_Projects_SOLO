@@ -57,19 +57,23 @@ def largest_sub_sum(array) #technically I believe this is a n^3 operation since 
 end
 
 
-#PHASE 2 - O(n) time with O(1) memory
+#PHASE 2 - O(n) time with O(1) memory --- not sure why but really struggled with this so had to get a hint from the solution
 
-def largest_contiguous_subsum2(arr)
-  largest = arr.first
-  current = arr.first
 
-  return arr.max if arr.all? { |num| num < 0 }
 
-  (1...arr.length).each do |i|
-    current = 0 if current < 0
-    current += arr[i]
-    largest = current if current > largest
+  def largest_sub_sum_linear(arr)
+    largest = arr.first
+    current = arr.first
+
+    return arr.max if arr.all? { |num| num < 0 }
+    i = 1
+
+    while i < arr.length
+      current = 0 if current < 0
+      current += arr[i]
+      largest = current if current > largest
+      i+=1
+    end
+
+    largest
   end
-
-  largest
-end

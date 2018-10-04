@@ -70,3 +70,12 @@ input[type="radio"]:checked {
   background-color:blue;
 
 }
+
+input:last-child {
+    background: gold;
+}
+
+input:last-child:hover {
+    -webkit-filter: brightness(50%);
+    background: gold;
+}

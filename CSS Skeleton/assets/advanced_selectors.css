@@ -44,3 +44,29 @@ ol {
 }
 
 
+/* adding in the normal radio button appearance */
+input[type="radio"] {
+      -webkit-appearance: none;
+      width: 27px;
+      height: 27px;
+      cursor: pointer;
+      background-image: url(./stars.png);
+      vertical-align: bottom;
+      outline: none;
+      background-color: gold;
+  }
+
+/* adding in the hover radio button appearance */
+
+input[type="radio"]:hover{
+    background-position: 28px 55px;
+    border: 1px solid #444;
+    background-color:#FFE4E1;
+    -webkit-filter: brightness(95%)
+}
+
+input[type="radio"]:checked {
+  background-position: 30px 30px;
+  background-color:blue;
+
+}

@@ -21,19 +21,32 @@ end
 # The two strings are anagrams if an index is found for every letter and the second string is empty at the end of the iteration.
 # Try varying the length of the input strings. What are the differences between #first_anagram? and #second_anagram??
 
-
+# STILL WORKING ON THIS...
 def second_anagram?(string, string2)
-  array = string1.split('')
+  array = string.split('')
   check_array = string.split('')
 
   array.each do |ch|
     if check_array.find_index(ch)
       target = check_array.find_index(ch)
     else
+      return false
       next
     end
     check_array.delete_at(target)
   end
 
   check_array.empty?
+end
+
+
+#Phase III
+# Write a method #third_anagram? that solves the problem by sorting both strings alphabetically.
+# The strings are then anagrams if and only if the sorted versions are the identical.
+# What is the time complexity of this solution? Is it better or worse than #second_anagram??
+
+  #would this be similar to quicksort? in that it's a (n log(n)) for time and space? 
+
+def anagram3(string1, string2)
+(string1.chars.sort.join == string2.chars.sort.join) ? true : false
 end

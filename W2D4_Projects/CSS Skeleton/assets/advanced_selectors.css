@@ -1,0 +1,81 @@
+/* Introduction to Cascading Style Sheets */
+
+body {
+  /* If the user cannot load the Arial font, the sans-serif font is used */
+  font-family: Arial, sans-serif;
+  background-color: #FEFFF1;
+}
+
+h1 {
+  font-size: 38px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+/* This selector selects ALL anchor tag children of ALL list elements that
+are children of an Unordered List element */
+ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* This selector selects all image elements that are children (1 level deep)
+of a header element */
+header > img {
+  width: 100px;
+}
+
+/* Selects all elements with the class attribute "ingredients-list" */
+.ingredients-list {
+
+  /* The list style property is shorthand for multiple list-style properties*/
+  list-style: square inside;
+}
+
+ol {
+  list-style: upper-roman inside;
+}
+
+.user_review h4 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+/* adding in the normal radio button appearance */
+input[type="radio"] {
+      -webkit-appearance: none;
+      width: 27px;
+      height: 27px;
+      cursor: pointer;
+      background-image: url(./stars.png);
+      vertical-align: bottom;
+      outline: none;
+      background-color: gold;
+  }
+
+/* adding in the hover radio button appearance */
+
+input[type="radio"]:hover{
+    background-position: 28px 55px;
+    border: 1px solid #444;
+    background-color:#FFE4E1;
+    -webkit-filter: brightness(95%)
+}
+
+input[type="radio"]:checked {
+  background-position: 30px 30px;
+  background-color:blue;
+
+}
+
+input:last-child {
+    background: gold;
+}
+
+input:last-child:hover {
+    -webkit-filter: brightness(50%);
+    background: gold;
+}
